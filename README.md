@@ -1,6 +1,22 @@
-frontend-nanodegree-arcade-game
-===============================
+# Udacity Front End Developer Nanodegree Frogger Clone
 
-Students should use this [rubric](https://www.udacity.com/course/viewer/#!/c-nd001/l-2696458597/m-2687128535) for self-checking their submission.
+A simple Frogger clone created for the Udacity Front End Developer Nanodegree.
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+# Installation
+It is pretty easy, just download all of the Files in this Repository, do them in a Folder and run the index.html with your favorite Browser.
+
+# How To Play
+You, the Player, have to reach the Water at the top of the Screen without hitting any Bugs.
+
+## Controls
+You can play with the Arrow keys or with `W,S,A,D`
+
+# Modifications
+There are two little modifications you can use. You can find both in the `js/app.js` file.
+* The Variable `playerSprite` can be used to change the sprite of the Player.
+* The Variable `numberOfMaxEnemiesOnScreen` can be used to change the number on Enemies on the Screen at the same Time.
+
+# Things to do
+* Adding a Point System
+* Adding a way to do the modifications from above ingame
+* Adding Messages for death and winning

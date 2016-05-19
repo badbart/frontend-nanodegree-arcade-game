@@ -1,8 +1,11 @@
-/** Used to save all Enemies in */
-var allEnemies = [];
+/** The Sprite used for the Player */
+var playerSprite = 'images/char-boy.png';
 
 /** Number of Max Enemies on Screen */
 var numberOfMaxEnemiesOnScreen = 5;
+
+/** Used to save all Enemies in */
+var allEnemies = [];
 
 /** Class for an Enemy */
 var Enemy = function() {
@@ -35,7 +38,7 @@ Enemy.prototype.render = function() {
 
 /** Class for the Player */
 var Player = function() {
-  this.sprite = 'images/char-boy.png';
+  this.sprite = playerSprite;
   this.reset();
 
   Resources.load(this.sprite);
