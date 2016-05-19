@@ -110,7 +110,6 @@ for (var i = 0; i < numberOfMaxEnemiesOnScreen; i++) {
   allEnemies.push(new Enemy());
 }
 
-
 /** Listens for all Keypresses and send them to the Player Input Handler */
 document.addEventListener('keyup', function(e) {
   var allowedKeys = {
