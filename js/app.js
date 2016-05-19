@@ -1,3 +1,5 @@
+var allEnemies = [];
+
 /** Class for an Enemy */
 var Enemy = function() {
   this.sprite = 'images/enemy-bug.png';
@@ -15,6 +17,11 @@ var Enemy = function() {
 */
 Enemy.prototype.update = function(dt) {
   this.x = this.x + (dt * this.speed * 200);
+
+  if (this.x > 605) {
+    allEnemies.splice(allEnemies.indexOf(this), 1);
+    allEnemies.push(new Enemy());
+  }
 };
 
 /** Draw the enemy on the screen, required method for game */
@@ -85,8 +92,6 @@ Player.prototype.render = function() {
 // Place the player object in a variable called player
 
 var player = new Player();
-
-var allEnemies = [];
 for (var i = 0; i < 5; i++) {
   allEnemies.push(new Enemy());
 }
