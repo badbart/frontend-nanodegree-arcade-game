@@ -6,6 +6,11 @@ var Enemy = function() {
   // The image/sprite for our enemies, this uses
   // a helper we've provided to easily load images
   this.sprite = 'images/enemy-bug.png';
+  this.x = 0;
+  this.y = 0;
+  this.speed = 0; // Value between 0 and 1, do created Bugs with different speed
+
+  Resources.load(this.sprite);
 };
 
 // Update the enemy's position, required method for game
@@ -25,17 +30,75 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 
+var Player = function() {
+  this.sprite = 'images/char-boy.png';
+  this.x = 201;
+  this.y = 390;
+
+  Resources.load(this.sprite);
+};
+
+Player.prototype.update = function(dt) {
+
+};
+
+/** Handles the Keybord input. Changing the Coordinate
+ * the Player is at the Moment.
+ * @param {string} pressedKey - The pressed Key
+ */
+Player.prototype.handleInput = function(pressedKey) {
+  switch (pressedKey) {
+    case 'left':
+      if (this.x > 100) {
+        this.x = this.x - 100;
+      }
+      break;
+    case 'up':
+      if (this.y > 3) {
+        this.y = this.y - 90;
+      }
+      break;
+    case 'right':
+      if (this.x < 401) {
+        this.x = this.x + 100;
+      }
+      break;
+    case 'down':
+      if (this.y < 390) {
+        this.y = this.y + 90;
+      }
+      break;
+    default:
+      // this shoudn't happen, but better safe than sorry
+      console.log("Not able to find a use for the pressed key " + pressedKey);
+      break;
+  }
+};
+
+/** Draws the Image to the Canvas */
+Player.prototype.render = function() {
+  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
+
+var player = new Player();
+
+var allEnemies = [];
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
   var allowedKeys = {
+    65: 'left',
     37: 'left',
+    87: 'up',
     38: 'up',
+    68: 'right',
     39: 'right',
+    83: 'down',
     40: 'down'
   };
 
