@@ -8,19 +8,19 @@ gulp.task('default',['linting']);
 
 gulp.task('linting', function() {
 	console.log('Liniting Task started');
-	
+
 	gulp.src('gulpfile.js')
-	.pipe(jshint())	
+	.pipe(jshint())
 	.pipe(jshint.reporter('default'))
 	.pipe(jshint.reporter('fail'));
-	
-	gulp.src('js/resumeBuilder.js')
-	.pipe(jshint())	
+
+	gulp.src('js/app.js')
+	.pipe(jshint())
 	.pipe(jshint.reporter('default'))
 	.pipe(jshint.reporter('fail'));
 
 	console.log('JS Hint done');
-	
+
 	gulp.src('index.html')
 	.pipe(html5Lint());
 

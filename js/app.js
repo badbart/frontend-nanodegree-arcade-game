@@ -1,4 +1,8 @@
+/** Used to save all Enemies in */
 var allEnemies = [];
+
+/** Number of Max Enemies on Screen */
+var numberOfMaxEnemiesOnScreen = 5;
 
 /** Class for an Enemy */
 var Enemy = function() {
@@ -37,8 +41,19 @@ var Player = function() {
   Resources.load(this.sprite);
 };
 
+/** Used to check if the Player has collided with an Enemy */
 Player.prototype.update = function() {
+  var x = Math.floor(this.x / 100);
+  var y = Math.floor(this.y / 100);
+  for (var i = 0; i < allEnemies.length; i++) {
+    var enemyX = Math.floor(allEnemies[i].x / 100);
+    var enemyY = Math.floor(allEnemies[i].y / 100);
 
+    if (x === enemyX && y === enemyY) {
+      this.reset();
+      return;
+    }
+  }
 };
 
 /** Handles the Keybord input. Changing the Coordinate
@@ -87,12 +102,8 @@ Player.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
-
 var player = new Player();
-for (var i = 0; i < 5; i++) {
+for (var i = 0; i < numberOfMaxEnemiesOnScreen; i++) {
   allEnemies.push(new Enemy());
 }
 
