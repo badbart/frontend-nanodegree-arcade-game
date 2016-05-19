@@ -1,0 +1,27 @@
+{
+  "name": "frontend-nanodegree-arcade-game",
+  "version": "1.0.0",
+  "description": "Udacity FEND P5",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-csslint": "^0.3.0",
+    "gulp-html5-lint": "^1.1.0",
+    "gulp-htmllint": "^0.0.8",
+    "gulp-jshint": "^2.0.0",
+    "jshint": "^2.9.2"
+  },
+  "devDependencies": {
+    "eslint": "^2.10.2",
+    "eslint-config-google": "^0.5.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:badbart/frontend-nanodegree-arcade-game.git"
+  },
+  "author": "Tom",
+  "license": "ISC"
+}
