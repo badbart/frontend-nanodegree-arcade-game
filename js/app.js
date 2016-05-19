@@ -1,10 +1,5 @@
-// Enemies our player must avoid
+/** Class for an Enemy */
 var Enemy = function() {
-  // Variables applied to each of our instances go here,
-  // we've provided one for you to get started
-
-  // The image/sprite for our enemies, this uses
-  // a helper we've provided to easily load images
   this.sprite = 'images/enemy-bug.png';
   this.x = 0;
   this.y = 0;
@@ -26,19 +21,15 @@ Enemy.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-// Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
-
+/** Class for the Player */
 var Player = function() {
   this.sprite = 'images/char-boy.png';
-  this.x = 201;
-  this.y = 390;
+  this.reset();
 
   Resources.load(this.sprite);
 };
 
-Player.prototype.update = function(dt) {
+Player.prototype.update = function() {
 
 };
 
@@ -54,8 +45,10 @@ Player.prototype.handleInput = function(pressedKey) {
       }
       break;
     case 'up':
-      if (this.y > 3) {
+      if (this.y > 30) {
         this.y = this.y - 90;
+      } else {
+        this.reset();
       }
       break;
     case 'right':
@@ -75,6 +68,12 @@ Player.prototype.handleInput = function(pressedKey) {
   }
 };
 
+/** Resets the Player Position to the Start Values */
+Player.prototype.reset = function() {
+  this.x = 201;
+  this.y = 390;
+};
+
 /** Draws the Image to the Canvas */
 Player.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -88,8 +87,9 @@ var player = new Player();
 
 var allEnemies = [];
 
-// This listens for key presses and sends the keys to your
-// Player.handleInput() method. You don't need to modify this.
+
+
+/** Listens for all Keypresses and send them to the Player Input Handler */
 document.addEventListener('keyup', function(e) {
   var allowedKeys = {
     65: 'left',
