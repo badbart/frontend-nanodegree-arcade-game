@@ -1,22 +1,23 @@
 /** Class for an Enemy */
 var Enemy = function() {
   this.sprite = 'images/enemy-bug.png';
-  this.x = 0;
-  this.y = 0;
-  this.speed = 0; // Value between 0 and 1, do created Bugs with different speed
+  this.x = -100;
+  // Selects on of the 4 possible Rows and add subtract a little bit from it so the
+  // Bug is in the Middle of the row
+  this.y = (Math.floor((Math.random() * 4) + 1) * 83) - 30;
+  this.speed = Math.random() + 1; // Value between 0 and 1, do created Bugs with different speed
 
   Resources.load(this.sprite);
 };
 
-// Update the enemy's position, required method for game
-// Parameter: dt, a time delta between ticks
+/** Update the enemy's position, required method for game
+ * @param {int} dt - a time delta between ticks
+*/
 Enemy.prototype.update = function(dt) {
-  // You should multiply any movement by the dt parameter
-  // which will ensure the game runs at the same speed for
-  // all computers.
+  this.x = this.x + (dt * this.speed * 200);
 };
 
-// Draw the enemy on the screen, required method for game
+/** Draw the enemy on the screen, required method for game */
 Enemy.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
@@ -45,8 +46,8 @@ Player.prototype.handleInput = function(pressedKey) {
       }
       break;
     case 'up':
-      if (this.y > 30) {
-        this.y = this.y - 90;
+      if (this.y > 58) {
+        this.y = this.y - 83;
       } else {
         this.reset();
       }
@@ -58,7 +59,7 @@ Player.prototype.handleInput = function(pressedKey) {
       break;
     case 'down':
       if (this.y < 390) {
-        this.y = this.y + 90;
+        this.y = this.y + 83;
       }
       break;
     default:
@@ -86,7 +87,9 @@ Player.prototype.render = function() {
 var player = new Player();
 
 var allEnemies = [];
-
+for (var i = 0; i < 5; i++) {
+  allEnemies.push(new Enemy());
+}
 
 
 /** Listens for all Keypresses and send them to the Player Input Handler */
